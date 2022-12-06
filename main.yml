@@ -1,0 +1,16 @@
+name: SOOS DAST GitHub Actions
+on: [push]
+jobs:
+  soos_dast_baseline_analysis:
+    name: SOOS DAST Baseline Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run SOOS DAST Baseline Analysis
+        uses: soos-io/soos-dast-github-action@v1.2.3
+        with:
+           client_id: ${{ secrets.QA_SOOS_CLIENT_ID }}
+           api_key: ${{ secrets.QA_SOOS_API_KEY }}
+           project_name: "aut_pd_urlA"
+           api_url: "https://qa-api.soos.io/api/"
+           scan_mode: "baseline"
+           target_url: "https://brokencrystals.com/"
